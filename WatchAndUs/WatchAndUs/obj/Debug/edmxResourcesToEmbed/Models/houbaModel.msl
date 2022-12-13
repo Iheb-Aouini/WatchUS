@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="watchModelStoreContainer" CdmEntityContainer="watchEntities">
+    <EntitySetMapping Name="Hosts">
+      <EntityTypeMapping TypeName="watchModel.Host">
+        <MappingFragment StoreEntitySet="Host">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="userHost" ColumnName="userHost" />
+          <ScalarProperty Name="vid_title" ColumnName="vid_title" />
+          <ScalarProperty Name="onOff" ColumnName="onOff" />
+          <ScalarProperty Name="inviteCode" ColumnName="inviteCode" />
+          <ScalarProperty Name="expiredTime" ColumnName="expiredTime" />
+          <ScalarProperty Name="maxUsers" ColumnName="maxUsers" />
+          <ScalarProperty Name="end" ColumnName="end" />
+          <ScalarProperty Name="test" ColumnName="test" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="watchModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Videos">
+      <EntityTypeMapping TypeName="watchModel.Video">
+        <MappingFragment StoreEntitySet="Videos">
+          <ScalarProperty Name="vid_title" ColumnName="vid_title" />
+          <ScalarProperty Name="video_path" ColumnName="video_path" />
+          <ScalarProperty Name="vid_fileName" ColumnName="vid_fileName" />
+          <ScalarProperty Name="vid_description" ColumnName="vid_description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Watchers">
+      <EntityTypeMapping TypeName="watchModel.Watcher">
+        <MappingFragment StoreEntitySet="Watchers">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="inviteCode" ColumnName="inviteCode" />
+          <ScalarProperty Name="askPause" ColumnName="askPause" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

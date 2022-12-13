@@ -1,0 +1,41 @@
+﻿<html>
+<head>
+    <title>USERS</title>
+    @Styles.Render("~/Content/login")
+</head>
+<body>
+    <h2>SIGNUP</h2>
+
+    <div class="login-box">
+        <h2>Sign Up</h2>
+        @using (Html.BeginForm("SignUp", "user", FormMethod.Post))
+        {
+            <form>
+                <div class="user-box">
+                    <input type="text" name="fullName" required="">
+                    <label>Full Name</label>
+                </div>
+
+                <div class="user-box">
+                    <input type="email" name="email" required="">
+                    <label>Email</label>
+                </div>
+                <div class="user-box">
+                    <input type="password" name="passwordHash" required="">
+                    <label>Password</label>
+                </div>
+                <button>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Submit
+                </button>
+            </form>
+        }
+        <h4>@ViewData["error"]</h4>
+       
+    </div>
+</body>
+</html>
+

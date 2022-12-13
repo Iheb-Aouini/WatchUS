@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="watchModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Host">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="userHost" Type="varbinary" MaxLength="50" Nullable="false" />
+          <Property Name="vid_title" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="onOff" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="inviteCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="expiredTime" Type="datetime" Nullable="false" />
+          <Property Name="maxUsers" Type="int" Nullable="false" />
+          <Property Name="end" Type="char" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="fullName" />
+          </Key>
+          <Property Name="fullName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="passwordHash" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Videos">
+          <Key>
+            <PropertyRef Name="vid_title" />
+          </Key>
+          <Property Name="vid_title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="video_path" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="vid_fileName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="vid_description" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="vid_image" Type="varchar" MaxLength="120" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Watchers">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="inviteCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="askPause" Type="char" MaxLength="10" />
+        </EntityType>
+        <EntityContainer Name="watchModelStoreContainer">
+          <EntitySet Name="Host" EntityType="Self.Host" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Videos" EntityType="Self.Videos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Watchers" EntityType="Self.Watchers" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="watchModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Host">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="userHost" Type="Binary" MaxLength="50" FixedLength="false" Nullable="false" />
+          <Property Name="vid_title" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="onOff" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="inviteCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="expiredTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="maxUsers" Type="Int32" Nullable="false" />
+          <Property Name="end" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="fullName" />
+          </Key>
+          <Property Name="fullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="passwordHash" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="vid_title" />
+          </Key>
+          <Property Name="vid_title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="video_path" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="vid_fileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="vid_description" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="vid_image" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Watcher">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="inviteCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="askPause" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="watchEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Hosts" EntityType="Self.Host" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <EntitySet Name="Videos" EntityType="Self.Video" />
+          <EntitySet Name="Watchers" EntityType="Self.Watcher" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="watchModelStoreContainer" CdmEntityContainer="watchEntities1">
+          <EntitySetMapping Name="Hosts">
+            <EntityTypeMapping TypeName="watchModel.Host">
+              <MappingFragment StoreEntitySet="Host">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="userHost" ColumnName="userHost" />
+                <ScalarProperty Name="vid_title" ColumnName="vid_title" />
+                <ScalarProperty Name="onOff" ColumnName="onOff" />
+                <ScalarProperty Name="inviteCode" ColumnName="inviteCode" />
+                <ScalarProperty Name="expiredTime" ColumnName="expiredTime" />
+                <ScalarProperty Name="maxUsers" ColumnName="maxUsers" />
+                <ScalarProperty Name="end" ColumnName="end" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="watchModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="fullName" ColumnName="fullName" />
+                <ScalarProperty Name="passwordHash" ColumnName="passwordHash" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Videos">
+            <EntityTypeMapping TypeName="watchModel.Video">
+              <MappingFragment StoreEntitySet="Videos">
+                <ScalarProperty Name="vid_title" ColumnName="vid_title" />
+                <ScalarProperty Name="video_path" ColumnName="video_path" />
+                <ScalarProperty Name="vid_fileName" ColumnName="vid_fileName" />
+                <ScalarProperty Name="vid_description" ColumnName="vid_description" />
+                <ScalarProperty Name="vid_image" ColumnName="vid_image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Watchers">
+            <EntityTypeMapping TypeName="watchModel.Watcher">
+              <MappingFragment StoreEntitySet="Watchers">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="inviteCode" ColumnName="inviteCode" />
+                <ScalarProperty Name="askPause" ColumnName="askPause" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

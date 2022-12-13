@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/navbar")
+    
+</head>
+   
+
+    <body id="page-top" class="index" data-pinterest-extension-installed="cr1.3.4">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-fixed-top navbar-shrink">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand page-scroll logo" href="/home/index">WATCH US</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="hidden active">
+                            <a href="#page-top"></a>
+                        </li>
+                        <li class="">
+                            <a class="page-scroll" href="#services">Movies</a>
+                        </li>
+                        @{
+                            if (Session["username"] == null) { 
+                            <li class="">
+                                @Html.ActionLink("Login", "SignIn", "user")
+
+                            </li>
+                            }
+                           }
+                        <li class="">
+                            @Html.ActionLink("About", "About", "Home")
+                        </li>
+                        <li class="">
+                            <a class="page-scroll" href="#team">Team</a>
+                        </li>
+                        <li class="">
+                            <a class="page-scroll" href="#contact">Contact</a>
+                        </li>
+
+                        @{
+                            if (Session["username"] != null)
+                            {
+                                <li class="ga7ez" style="margin-left:80px;">
+                                    <div class="dropdown page-scroll">
+
+                                        <button class="dropbtn" style="text-transform:uppercase;">@Session["username"]</button>
+                                        <div class="dropdown-content">
+                                            <a href="#">Profile</a>
+
+                                            @Html.ActionLink("Logout", "Logout", "user")
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        }
+                    </ul>
+
+
+
+
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+
+
+
+
+
+
+
+
+
+
+
+        <div class="container body-content">
+            @RenderBody()
+            
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
+        <h2>wa brooo</h2>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>
